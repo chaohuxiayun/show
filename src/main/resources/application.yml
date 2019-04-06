@@ -37,6 +37,8 @@ spring:
         encoding: UTF-8
         content-type: text/html
         cache: false
+    activemq:
+        broker-url: tcp://127.0.0.1:61616
 
 threadpool:
   core-pool-size: 10
