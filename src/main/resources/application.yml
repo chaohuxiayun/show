@@ -39,6 +39,15 @@ spring:
         cache: false
     activemq:
         broker-url: tcp://127.0.0.1:61616
+    http:
+        multipart:
+                enabled: true #默认支持文件上传.
+                file-size-threshold: 0 #支持文件写入磁盘.
+                #location= # 上传文件的临时目录
+                max-file-size: 1Mb # 最大支持文件大小
+                max-request-size: 10Mb # 最大支持请求大小
+
+
 
 threadpool:
   core-pool-size: 10

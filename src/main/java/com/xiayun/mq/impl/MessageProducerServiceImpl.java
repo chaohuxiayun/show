@@ -3,6 +3,7 @@ package com.xiayun.mq.impl;
 import javax.annotation.Resource;
 import javax.jms.JMSException;
 import javax.jms.Queue;
+import javax.jms.Topic;
 
 import com.xiayun.mq.MessageProducerService;
 import org.springframework.jms.core.JmsMessagingTemplate;
@@ -22,11 +23,14 @@ public class MessageProducerServiceImpl implements MessageProducerService {
     @Resource
     private Queue objQueue;
 
+    @Resource
+    private Topic msgTopic;
+
     @Override
     public void sendMessage(String msg) throws JMSException {
-        System.out.println(objQueue.getQueueName());
-        System.out.println(msgQueue.getQueueName());
+
         this.jmsMessagingTemplate.convertAndSend(this.msgQueue, msg);
+        this.jmsMessagingTemplate.convertAndSend(this.msgTopic, msg);
     }
 
     @Override
